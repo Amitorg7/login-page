@@ -1,0 +1,79 @@
+#reg {
+
+  .data {
+    width: 70%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .data-content-box {
+    margin: 20px 0px;
+  }
+
+  .reg-header h3 {
+    font-size: 35px;
+    color: black;
+    font-weight: 600;
+    text-align: left;
+  }
+  .input-box {
+    margin: 20px 0px;
+  }
+  .input-box p {
+    font-size: 12px;
+    float: left;
+    margin: 0px;
+    font-weight: 600;
+    color: gray;
+  }
+  .input-field {
+    width: 100%;
+    overflow: hidden;
+    font-size: 20px;
+    padding-bottom: 6px;
+    margin: 8px 0;
+    border-bottom: 1px solid #4caf50;
+  }
+  .input-field input {
+    border: none;
+    outline: none;
+    background: none;
+    color: black;
+    font-size: 18px;
+    width: 80%;
+    float: left;
+  }
+  .data-content-box button {
+    padding: 10px 30%;
+    background-color: #7754f6;
+    font-size: 15px;
+    color: white;
+    font-weight: 700;
+    border-radius: 10px;
+    border-top-right-radius: 0px;
+    border-color: none;
+    border-color: transparent;
+    cursor: pointer;
+  }
+  .data-content-box button:hover,
+  .data-content-box button:focus {
+    outline: 0;
+    background-color: rgb(62, 17, 187);
+  }
+
+  .login-text p {
+    font-weight: 600;
+    text-align: left;
+  }
+  .login-text span{
+      color: #7754f6;
+  }
+
+//   collm two 
+  .sec-content-box{
+    // background-image: url(../);
+  }
+
+}
