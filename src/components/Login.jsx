@@ -6,10 +6,9 @@ const Login = () => {
     <Fragment>
       <section id="reg">
         <div className="container-fluid">
-          <div className="row">
-            <div className="data">
-              <div className="col-md-6 col-sm-6">
-                <div className="reg-content-box">
+            <div className="row">
+              <div className="col-md-6 col-sm-12 d-flex align-items-center reg-content">
+                <div className="p-5 w-100">
                   <div className="reg-header">
                     <h3>Sign In</h3>
                   </div>
@@ -29,25 +28,24 @@ const Login = () => {
                         />
                       </div>
                     </div>
-                    <button>Login</button>
+                    <button className="w-100">Login</button>
                   </div>
                   <div className="login-text">
                     <p>
                       Don't have a account?
-                      <Link to="/reg">
-                        <span>create here</span>
+                      <Link className="ml-2" to="/reg">
+                        <span>Create here</span>
                       </Link>
                     </p>
                   </div>
                 </div>
               </div>
-              <div className="col-md-6 col-sm-6">
+              <div className="col-md-6 col-sm-12">
                 <div className="sec-content-box">
-                    <h3>hi dude</h3>
+                    {/* Content Here */}
                 </div>
               </div>
             </div>
-          </div>
         </div>
       </section>
     </Fragment>

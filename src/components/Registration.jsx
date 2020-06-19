@@ -1,15 +1,14 @@
 import React, { Fragment } from "react";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Registration = () => {
   return (
     <Fragment>
       <section id="reg">
         <div className="container-fluid">
-          <div className="row">
-            <div className="data">
-              <div className="col-md-6 col-sm-6">
-                <div className="reg-content-box">
+            <div className="row">
+            <div className="col-md-6 col-sm-12 d-flex align-items-center reg-content">
+            <div className="p-5 w-100">
                   <div className="reg-header">
                     <h3>Sign up</h3>
                   </div>
@@ -17,7 +16,10 @@ const Registration = () => {
                     <div className="input-box">
                       <p>First name</p>
                       <div className="input-field">
-                        <input type="text" placeholder="Enter your first name" />
+                        <input
+                          type="text"
+                          placeholder="Enter your first name"
+                        />
                       </div>
                     </div>
                     <div className="input-box">
@@ -41,20 +43,24 @@ const Registration = () => {
                         />
                       </div>
                     </div>
-                    <button> Create Account</button>
+                    <button className="w-100"> Create Account</button>
                   </div>
                   <div className="login-text">
-                      <p>Already have an account? <Link to="/"><span>Login</span></Link> </p>
+                    <p>
+                      Already have an account?{" "}
+                      <Link to="/">
+                        <span>Login</span>
+                      </Link>{" "}
+                    </p>
                   </div>
                 </div>
               </div>
-              <div className="col-md-6 col-sm-6">
+              <div className="col-md-6 col-sm-12">
                 <div className="sec-content-box">
-                   <h3>hello boss</h3>
+                  {/* <h3>hello boss</h3> */}
                 </div>
               </div>
             </div>
-          </div>
         </div>
       </section>
     </Fragment>

@@ -1,5 +1,6 @@
 #reg {
 
+
   .data {
     width: 70%;
     position: absolute;
@@ -8,18 +9,27 @@
     transform: translate(-50%, -50%);
   }
 
+
+
+
   .data-content-box {
     margin: 20px 0px;
   }
+
+  .reg-content{
+      height: 100vh
+  }
+
 
   .reg-header h3 {
     font-size: 35px;
     color: black;
     font-weight: 600;
     text-align: left;
+    margin-bottom: 40px;
   }
   .input-box {
-    margin: 20px 0px;
+    margin-bottom: 30px;
   }
   .input-box p {
     font-size: 12px;
@@ -73,7 +83,10 @@
 
 //   collm two 
   .sec-content-box{
-    // background-image: url(../);
-  }
+    background-image: url(/img/3982705.jpg);
+    height: 100vh;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
 
 }
