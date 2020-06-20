@@ -1,22 +1,27 @@
 import React, { Component } from "react";
-import "./App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Registration from "./components/Registration";
-import Login from "./components/Login";
+import { privateRoute, authRoute, publicRoute } from "./routes/routes";
+import AuthRoute from "./routes/Authrouter";
+import PrivateRoute from "./routes/PrivateRouter";
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <Router>
-          <Switch>
-            <Route path="/" exact component={Login} />
-            <Route path="/reg" exact component={Registration} />
-          </Switch>
-        </Router>
-      </div>
-    );
-  }
-}
+const App = () => {
+  return (
+    <div className="App">
+      <Router>
+        <Switch>
+          {publicRoute.map((R, K) => (
+            <Route exact key={K} {...R} />
+          ))}
+          {privateRoute.map((R, K) => (
+            <PrivateRoute exact key={K} {...R}/>
+          ))}
+          {authRoute.map((R, K) => (
+            <AuthRoute exact key={K} {...R} />
+          ))}
+        </Switch>
+      </Router>
+    </div>
+  );
+};
 
 export default App;

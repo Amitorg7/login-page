@@ -1,66 +1,93 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from "react";
 import { Link } from "react-router-dom";
+import { fauth } from "../config/firebaseConfig";
 
-const Registration = () => {
+const Registration = (props) => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleInputEmail = (e) => {
+    setEmail(e.target.value);
+  };
+  const handleInputPassword = (e) => {
+    setPassword(e.target.value);
+  };
+
+  const handleSubmit = () => {
+    fauth
+      .createUserWithEmailAndPassword(email, password)
+      .then((res) => {
+        alert("account creat successfull");
+        props.history.push("/login");
+      })
+      .catch((e) => {
+        alert("something wrong");
+      });
+  };
   return (
     <Fragment>
       <section id="reg">
         <div className="container-fluid">
-            <div className="row">
+          <div className="row">
             <div className="col-md-6 col-sm-12 d-flex align-items-center reg-content">
-            <div className="p-5 w-100">
-                  <div className="reg-header">
-                    <h3>Sign up</h3>
-                  </div>
-                  <div className="data-content-box">
-                    <div className="input-box">
-                      <p>First name</p>
-                      <div className="input-field">
-                        <input
-                          type="text"
-                          placeholder="Enter your first name"
-                        />
-                      </div>
-                    </div>
-                    <div className="input-box">
-                      <p>Last name</p>
-                      <div className="input-field">
-                        <input type="text" placeholder="Enter your last name" />
-                      </div>
-                    </div>
-                    <div className="input-box">
-                      <p>Email address</p>
-                      <div className="input-field">
-                        <input type="email" placeholder="Enter your email" />
-                      </div>
-                    </div>
-                    <div className="input-box">
-                      <p>Create Password</p>
-                      <div className="input-field">
-                        <input
-                          type="password"
-                          placeholder="Enter your password"
-                        />
-                      </div>
-                    </div>
-                    <button className="w-100"> Create Account</button>
-                  </div>
-                  <div className="login-text">
-                    <p>
-                      Already have an account?{" "}
-                      <Link to="/">
-                        <span>Login</span>
-                      </Link>{" "}
-                    </p>
-                  </div>
+              <div className="p-5 w-100">
+                <div className="reg-header">
+                  <h3>Sign up</h3>
                 </div>
-              </div>
-              <div className="col-md-6 col-sm-12">
-                <div className="sec-content-box">
-                  {/* <h3>hello boss</h3> */}
+                <div className="data-content-box">
+                  <div className="input-box">
+                    <p>First name</p>
+                    <div className="input-field">
+                      <input type="text" placeholder="Enter your first name" />
+                    </div>
+                  </div>
+                  <div className="input-box">
+                    <p>Last name</p>
+                    <div className="input-field">
+                      <input type="text" placeholder="Enter your last name" />
+                    </div>
+                  </div>
+                  <div className="input-box">
+                    <p>Email address</p>
+                    <div className="input-field">
+                      <input
+                        type="email"
+                        value={email}
+                        placeholder="Enter your email"
+                        onChange={handleInputEmail}
+                      />
+                    </div>
+                  </div>
+                  <div className="input-box">
+                    <p>Create Password</p>
+                    <div className="input-field">
+                      <input
+                        type="password"
+                        placeholder="Enter your password"
+                        value={password}
+                        onChange={handleInputPassword}
+                      />
+                    </div>
+                  </div>
+                  <button className="w-100" onClick={handleSubmit}>
+                    {" "}
+                    Create Account
+                  </button>
+                </div>
+                <div className="login-text">
+                  <p>
+                    Already have an account?
+                    <Link className="ml-2" to="/login">
+                      <span>Login</span>
+                    </Link>
+                  </p>
                 </div>
               </div>
             </div>
+            <div className="col-md-6 col-sm-12">
+              <div className="sec-content-box">{/* <h3>hello boss</h3> */}</div>
+            </div>
+          </div>
         </div>
       </section>
     </Fragment>
