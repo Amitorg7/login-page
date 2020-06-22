@@ -2,7 +2,7 @@ import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
 import { fauth } from "../config/firebaseConfig";
 
-const Lol = () => {
+const Lol = (props) => {
   return (
     <Fragment>
       <h1>Ami khubi valo manush</h1>

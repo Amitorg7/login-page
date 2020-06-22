@@ -1,6 +1,6 @@
 import React, { Fragment, useState } from "react";
 import { Link } from "react-router-dom";
-import { fauth } from "../config/firebaseConfig";
+import { onLogin } from "../actions/auth";
 
 const Login = (props) => {
   const [email, setEmail] = useState("");
@@ -13,17 +13,11 @@ const Login = (props) => {
     setPassword(e.target.value);
   };
 
-  const handleSubmit = () => {
-    fauth
-      .signInWithEmailAndPassword(email, password)
-      .then((res) => {
-        localStorage.setItem("loginInfo", true);
-        alert("login successfull");
-        props.history.push("/hudai");
-      })
-      .catch((e) => {
-        alert("something wrong");
-      });
+  const handleSubmit = async (e) => {
+    const status = await onLogin(email, password);
+    if (status) {
+      props.history.push("/hudai");
+    }
   };
 
   return (

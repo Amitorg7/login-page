@@ -1,29 +1,31 @@
 import React, { Fragment, useState } from "react";
 import { Link } from "react-router-dom";
-import { fauth } from "../config/firebaseConfig";
+import { onRegister } from "../actions/auth";
 
 const Registration = (props) => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const initData = {
+    first_name: "",
+    last_name: "",
+    email: "",
+    password: "",
+  }
+  const [data, setData] = useState(initData);
 
-  const handleInputEmail = (e) => {
-    setEmail(e.target.value);
-  };
-  const handleInputPassword = (e) => {
-    setPassword(e.target.value);
+  const handleInput = (e) => {
+    const { name, value } = e.target;
+    console.log(name, value)
+    setData({ ...data, [name]: value });
   };
 
-  const handleSubmit = () => {
-    fauth
-      .createUserWithEmailAndPassword(email, password)
-      .then((res) => {
-        alert("account creat successfull");
-        props.history.push("/login");
-      })
-      .catch((e) => {
-        alert("something wrong");
-      });
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const status = await onRegister(data);
+    if (status) {
+      setData(initData);
+      props.history.push("/hudai")
+    }
   };
+console.log(data)
   return (
     <Fragment>
       <section id="reg">
@@ -38,13 +40,25 @@ const Registration = (props) => {
                   <div className="input-box">
                     <p>First name</p>
                     <div className="input-field">
-                      <input type="text" placeholder="Enter your first name" />
+                      <input
+                        onChange={handleInput}
+                        value={data.first_name}
+                        name="first_name"
+                        type="text"
+                        placeholder="Enter your first name"
+                      />
                     </div>
                   </div>
                   <div className="input-box">
                     <p>Last name</p>
                     <div className="input-field">
-                      <input type="text" placeholder="Enter your last name" />
+                      <input
+                        onChange={handleInput}
+                        value={data.last_name}
+                        type="text"
+                        name="last_name"
+                        placeholder="Enter your last name"
+                      />
                     </div>
                   </div>
                   <div className="input-box">
@@ -52,9 +66,10 @@ const Registration = (props) => {
                     <div className="input-field">
                       <input
                         type="email"
-                        value={email}
+                        name="email"
+                        value={data.email}
                         placeholder="Enter your email"
-                        onChange={handleInputEmail}
+                        onChange={handleInput}
                       />
                     </div>
                   </div>
@@ -63,14 +78,14 @@ const Registration = (props) => {
                     <div className="input-field">
                       <input
                         type="password"
+                        name="password"
                         placeholder="Enter your password"
-                        value={password}
-                        onChange={handleInputPassword}
+                        value={data.password}
+                        onChange={handleInput}
                       />
                     </div>
                   </div>
                   <button className="w-100" onClick={handleSubmit}>
-                    {" "}
                     Create Account
                   </button>
                 </div>
